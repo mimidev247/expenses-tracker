@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ExpenseSight</h1>
+            <button id="theme-toggle" aria-label="switch between light and dark mode">🌙</button>
+        </header>
+
+        <section class="dashboard">
+            <h2>Financial Dashboard</h2>
+            <p>Track and manage your finances in one place</p>
+
+           <div class="summary-cards">
+            <div class="normal-card">
+                <h3>Total Spending</h3>
+                <p id="total-spending">₦0</p>
+                <span class="trend-positive">↑ 12%</span>
+            </div>
+
+            <div class="purple-card">
+                <h3>Monthly Budget</h3>
+                <p>₦12,000</p>
+            </div>
+
+            <div class="light-card">
+                <h3>Savings Rate</h3>
+                <p id="savings-rate">₦0</p>
+                <span class="trend-positive">↑ 3.2%</span>
+            </div>
+
+            <div class="orange-card">
+                <h3>Categories</h3>
+                <p id="category-count">15</p>
+            </div>
+           </div> 
+
+           <div class="charts-section">
+            <div class="bar-chart">
+                <h3>Spending Overview</h3>
+                <canvas id="spendingChart"></canvas>
+            </div>
+            <div class="pie-chart">
+                <h3>Expense Categories</h3>
+                <canvas id="categoryChart"></canvas>
+            </div>
+           </div>
+
+           <div class="form-section">
+            <h3>Add New Expenses</h3>
+            <form action="" id="expense-form">
+                <input type="number" id="amount" placeholder="Amount" required>
+                <input type="text" id="description" placeholder="Description" required>
+                <select name="" id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Housing">Housing</option>
+                    <option value="Food">Food</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Skin & BodyCare">Skin $ BodyCare</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Entertainment">Entertainment</option>
+                </select>
+                <input type="date" id="date" required>
+                <button type="submit">Add Expense</button>
+            </form>
+           </div>
+
+           
+        </section>
+    </div>
+</body>
+</html>
