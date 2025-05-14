@@ -1,0 +1,21 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #222;
+    --card-bg: #f9f9f9;
+    --primary: #007bff;
+    --accent: #6200ea;
+    --positive: #2e7d32;
+    --light-card: #e3f2fd;
+    --orange: #ff9800;    
+}
+
+body.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #eaeaea;
+    --card-bg: #2e2e2e;
+    --primary: #4dabf5;
+    --accent: #bb86fc;
+    --positive: #81c784;
+    --light-card: #37474f;
+    --orange: #ffb74d;    
+}
