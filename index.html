@@ -1,125 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpenseSight</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>ExpenseSight</h1>
-            <button id="theme-toggle" aria-label="switch between light and dark mode">🌙</button>
-        </header>
-
-        <section class="dashboard">
-            <h2>Financial Dashboard</h2>
-            <p>Track and manage your finances in one place</p>
-
-           <div class="summary-cards">
-            <div class="normal-card">
-                <h3>Total Spending</h3>
-                <p id="total-spending">₦0</p>
-                <span class="trend-positive">↑ 12%</span>
-            </div>
-
-            <div class="purple-card">
-                <h3>Monthly Budget</h3>
-                <p>₦12,000</p>
-            </div>
-
-            <div class="light-card">
-                <h3>Savings Rate</h3>
-                <p id="savings-rate">₦0</p>
-                <span class="trend-positive">↑ 3.2%</span>
-            </div>
-
-            <div class="orange-card">
-                <h3>Categories</h3>
-                <p id="category-count">15</p>
-            </div>
-           </div> 
-
-           <div class="charts-section">
-            <div class="bar-chart">
-                <h3>Spending Overview</h3>
-                <canvas id="spendingChart"></canvas>
-            </div>
-            <div class="pie-chart">
-                <h3>Expense Categories</h3>
-                <canvas id="categoryChart"></canvas>
-            </div>
-           </div>
-
-           <div class="form-section">
-            <h3>Add New Expenses</h3>
-            <form action="" id="expense-form">
-                <input type="number" id="amount" placeholder="Amount" required>
-                <input type="text" id="description" placeholder="Description" required>
-                <select name="" id="category" required>
-                    <option value="">Select Category</option>
-                    <option value="Housing">Housing</option>
-                    <option value="Food">Food</option>
-                    <option value="Transportation">Transportation</option>
-                    <option value="Skin & BodyCare">Skin $ BodyCare</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Utilities">Utilities</option>
-                    <option value="Entertainment">Entertainment</option>
-                </select>
-                <input type="date" id="date" required>
-                <button type="submit">Add Expense</button>
-            </form>
-           </div>
-
-           <div class="transactions">
-            <h3>Recent Transactions</h3>
-            <ul id="transaction-list">
-                <li>
-                    <span class="label">Apartment Rent</span>
-                    <span class="amount">₦1200.00</span>
-                    <span class="meta">Housing - May 01,2025</span>
-                </li>
-                <li>
-                    <span class="label">Grocery Shopping</span>
-                    <span class="amount">₦120.45</span>
-                    <span class="meta">Food - May 05, 2025</span>
-                </li>
-                <li>
-                    <span class="label">Gas Station</span>
-                    <span class="amount">₦52.30</span>
-                    <span class="meta">Transportation - May 07, 2025</span>
-                </li>
-                <li>
-                    <span class="label">Restaurant Dinner</span>
-                    <span class="amount">₦84.20</span>
-                    <span class="meta">Food - May 08, 2025</span>
-                </li>
-                <li>
-                    <span class="label">Electric Bill</span>
-                    <span class="amount">₦145.00</span>
-                    <span class="meta">Utilities - May 10, 2025</span>
-                </li>
-                <li>
-                    <span class="label">Hospital Appointment</span>
-                    <span class="amount">₦40.00</span>
-                    <span class="meta">Healthcare - May 12, 2025</span>
-                </li>
-                <li>
-                    <span class="label">Gym Membership</span>
-                    <span class="amount">₦50.00</span>
-                    <span class="meta">Personal - May 15, 2025</span>
-                </li>
-                <li>
-                    <span class="label">Concert Tickets</span>
-                    <span class="amount">₦120.00</span>
-                    <span class="meta">Entertainment - May 17, 2025</span>
-                </li>
-            </ul>
-           </div>
-        </section>
+  <header>
+    <h1 class="lobster-regular">ExpenseSight</h1>
+    <button id="theme-toggle" aria-label="switch between light and dark mode">🌙</button>
+  </header>
+  <div class="container">
+    <div class="cards">
+        <div class="purple-card">
+          <p>Total Expenses This Month</p>
+          <h2>₦0.00</h2>
+          <small>Compared to ₦0.00 last month</small>
+        </div>
+        <div class="orange-card">
+          <p>Total Expenses This Week</p>
+          <h2>₦0.00</h2>
+          <small>Compared to ₦0.00 last week</small>
+        </div>
+        <div class="blue-card">
+          <p>Budget</p>
+          <h2>₦0.00</h2>
+          <small>₦0.00 spent</small>
+        </div>
     </div>
 
+    <div class="transaction-section">
+      <h3>Recent Transactions</h3>
+      <p>No expenses recorded yet. Add your first expense!</p>
+    </div>
+
+    <div class="form-section">
+      <h3>Add New Expense</h3>
+      <form id="expense-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" value="2025-05-20">
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option>Select a category</option>
+              <option>Food & Groceries</option>
+              <option>Transport</option>
+              <option>Utilities</option>
+              <option>Bills</option>
+              <option>Entertainment</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" placeholder="e.g., Coffee from Cafe">
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount (₦)</label>
+            <input type="number" id="amount" placeholder="e.g., 2000.00">
+          </div>
+        </div>
+        <button type="button" onclick="addExpense()">Add Expense</button>
+      </form>
+    </div>
+
+    <div class="budget-section">
+      <h3>Set your Budget</h3>
+      <div class="form-group">
+        <label for="budgetType">Budget Type</label>
+        <select id="budgetType">
+          <option>Monthly</option>
+          <option>Weekly</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="budget">Budget (₦)</label>
+        <input type="number" id="budget">
+      </div>
+      <button type="button" onclick="addBudget()">Add Budget</button>
+    </div>
+  </div>
+
+    <footer>&copy; 2025 MiDevs. All rights reserved.</footer>
+  
     <script src="script.js"></script>
 </body>
 </html>
