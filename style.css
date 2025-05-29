@@ -224,7 +224,7 @@ body.dark-mode header {
         gap: 1rem;
     }
     .cards > div {
-        width: 100%;
+        width: 90%;
         min-width: 0;
         font-size: 1rem;
         padding: 0.75rem;
