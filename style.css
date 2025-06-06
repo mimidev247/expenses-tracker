@@ -154,6 +154,81 @@ footer{
     box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
+/* Recent Transactions Styling */
+.transactions-list {
+    margin: 0;
+    padding: 0;
+}
+.transactions-list li {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(126,87,194,0.07);
+    margin-bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-left: 4px solid #7E57C2;
+    transition: box-shadow 0.2s;
+}
+body.dark-mode .transactions-list li {
+    background: #232323;
+    color: #fff;
+    border-left: 4px solid #42A5F5;
+}
+.transactions-list li strong {
+    font-size: 1.05rem;
+    color: #7E57C2;
+}
+body.dark-mode .transactions-list li strong {
+    color: #42A5F5;
+}
+.transactions-list li small {
+    color: #888;
+}
+body.dark-mode .transactions-list li small {
+    color: #bbb;
+}
+.tx-category {
+    flex: 1 1 120px;
+    font-weight: bold;
+    color: #7E57C2;
+}
+body.dark-mode .tx-category {
+    color: #42A5F5;
+}
+.tx-description {
+    flex: 2 1 180px;
+    color: #444;
+    font-size: 0.98rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+body.dark-mode .tx-description {
+    color: #eee;
+}
+.tx-date {
+    flex: 1 1 100px;
+    color: #888;
+    font-size: 0.95rem;
+    text-align: right;
+}
+body.dark-mode .tx-date {
+    color: #bbb;
+}
+.tx-amount {
+    flex: 1 1 90px;
+    font-weight: bold;
+    color: #388e3c;
+    text-align: right;
+}
+body.dark-mode .tx-amount {
+    color: #90ee90;
+}
+
 /* Dark mode styles */
 body.dark-mode {
     background: #181818;
@@ -255,4 +330,46 @@ body.dark-mode header {
     footer {
         font-size: 0.8rem;
     }
+    .transactions-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        text-align: left;
+    }
+    .tx-date, .tx-amount {
+        text-align: left;
+    }
+}
+.budget-progress {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+.budget-progress-bar {
+    height: 100%;
+    background: #388e3c;
+    width: 0%;
+    transition: width 0.4s;
+}
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #7E57C2;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 24px;
+    font-size: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, bottom 0.3s;
+    z-index: 9999;
+}
+.toast.show {
+    opacity: 1;
+    bottom: 3.5rem;
 }
