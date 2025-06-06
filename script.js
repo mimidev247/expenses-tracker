@@ -133,7 +133,8 @@ function updateTransactions() {
             <button class="tx-delete" title="Delete">&times;</button>
         `;
         // Delete
-        li.querySelector('.tx-delete').onclick = () => {
+        li.querySelector('.tx-delete').onclick = (e) => {
+            e.stopPropagation();
             const realIdx = transactions.length - 1 - idx;
             transactions.splice(realIdx, 1);
             saveData();
@@ -142,7 +143,8 @@ function updateTransactions() {
             showToast('Transaction deleted');
         };
         // Edit
-        li.querySelector('.tx-edit').onclick = () => {
+        li.querySelector('.tx-edit').onclick = (e) => {
+            e.stopPropagation();
             const realIdx = transactions.length - 1 - idx;
             const txToEdit = transactions[realIdx];
             document.getElementById('date').value = txToEdit.date;
@@ -155,9 +157,38 @@ function updateTransactions() {
             updateCards();
             showToast('Edit the fields and click Add Expense');
         };
+        // Show modal on click (except for edit/delete)
+        li.onclick = function(e) {
+            if (e.target.classList.contains('tx-edit') || e.target.classList.contains('tx-delete')) return;
+            if (window.innerWidth <= 600) { // Only on small screens
+                showTxModal(tx);
+            }
+        };
         transactionsList.appendChild(li);
     });
 }
+
+// Add this function to show the modal
+function showTxModal(tx) {
+    const modal = document.getElementById('tx-modal');
+    const body = document.getElementById('tx-modal-body');
+    body.innerHTML = `
+        <h3 style="margin-top:0">${tx.category}</h3>
+        <p><strong>Description:</strong> ${tx.description}</p>
+        <p><strong>Date:</strong> ${tx.date}</p>
+        <p><strong>Amount:</strong> ${formatCurrency(tx.amount)}</p>
+    `;
+    modal.style.display = 'flex';
+}
+
+// Add this to close the modal
+document.getElementById('tx-modal-close').onclick = function() {
+    document.getElementById('tx-modal').style.display = 'none';
+};
+// Optional: Close modal when clicking outside content
+document.getElementById('tx-modal').onclick = function(e) {
+    if (e.target === this) this.style.display = 'none';
+};
 
 // Update Cards (with budget progress bar)
 function updateCards() {

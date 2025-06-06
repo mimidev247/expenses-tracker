@@ -404,3 +404,41 @@ body.dark-mode header {
     opacity: 1;
     bottom: 3.5rem;
 }
+
+/* Transaction Details Modal */
+.tx-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+.tx-modal-content {
+    background: #fff;
+    color: #333;
+    padding: 1.5rem 1.2rem;
+    border-radius: 10px;
+    max-width: 90vw;
+    min-width: 250px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.15);
+    position: relative;
+}
+.tx-modal-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: #7E57C2;
+    cursor: pointer;
+}
+body.dark-mode .tx-modal-content {
+    background: #232323;
+    color: #fff;
+}
+@media (min-width: 601px) {
+    #tx-modal {
+        display: none !important;
+    }
+}
